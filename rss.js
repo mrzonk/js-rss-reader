@@ -12,7 +12,11 @@ fetch('urls.json').then((res) => {
 				console.error('URL invalid');
 				return
 			}
-			fetch(url).then((res) => {
+			fetch(url, {
+   headers: {
+       Accept: "*/*",
+   },
+}).then((res) => {
 				res.text().then((htmlTxt) => {
 					/* Extract the RSS Feed URL from the website */
 					try {
@@ -23,7 +27,11 @@ fetch('urls.json').then((res) => {
 						return
 					}
 					/* Fetch the RSS Feed */
-					fetch(feedUrl).then((res) => {
+					fetch(feedUrl, {
+   headers: {
+       Accept: "*/*",
+   },
+}).then((res) => {
 						res.text().then((xmlTxt) => {
 							/* Parse the RSS Feed and display the content */
 							try {
